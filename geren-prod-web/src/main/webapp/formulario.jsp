@@ -10,10 +10,17 @@
         <h1>Produto - Inclusão</h1>
         <div>
             <form>
+                <input type="hidden" />
                 <div>
                     <label>Nome</label>
                     <div>
                         <input type="text" />
+                    </div>
+                </div>
+                <div>
+                    <label>Senha</label>
+                    <div>
+                        <input type="password" />
                     </div>
                 </div>
                 <div>
@@ -53,6 +60,13 @@
                     <input type="checkbox" value="4" /> <label>Categoria 4</label>
                     <input type="checkbox" value="5" /> <label>Categoria 5</label>
                 </fieldset>
+                <div>
+                    <select>
+                        <option>Opção 1</option>
+                        <option>Opção 2</option>
+                        <option>Opção 3</option>
+                    </select>
+                </div>
                 <button type="submit">Salvar</button>
                 <button type="reset">Resetar</button>
             </form>
