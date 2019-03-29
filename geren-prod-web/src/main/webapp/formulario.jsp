@@ -9,56 +9,56 @@
     <body>
         <h1>Produto - Inclusão</h1>
         <div>
-            <form>
-                <input type="hidden" />
+            <form action="formulario-servlet" method="post">
+                <input type="hidden" name="escondido" value="xpto" />
                 <div>
                     <label>Nome</label>
                     <div>
-                        <input type="text" />
+                        <input type="text" name="nome" />
                     </div>
                 </div>
                 <div>
                     <label>Senha</label>
                     <div>
-                        <input type="password" />
+                        <input type="password" name="senha" />
                     </div>
                 </div>
                 <div>
                     <label>Descrição</label>
                     <div>
-                        <textarea></textarea>
+                        <textarea name="descricao"></textarea>
                     </div>
                 </div>
                 <div>
                     <label>Quantidade</label>
                     <div>
-                        <input type="text" />
+                        <input type="text" name="quantidade" />
                     </div>
                 </div>
                 <div>
                     <label>Preço compra</label>
                     <div>
-                        <input type="text" />
+                        <input type="text" name="prcompra" />
                     </div>
                 </div>
                 <div>
                     <label>Preço venda</label>
                     <div>
-                        <input type="text" />
+                        <input type="text" name="prvenda" />
                     </div>
                 </div>
                 <fieldset>
                     <legend>Disponível</legend>
-                    <input type="radio" value="1" /> <label>Sim</label>
-                    <input type="radio" value="0" /> <label>Não</label>
+                    <input type="radio" name="disponivel" value="1" /> <label>Sim</label>
+                    <input type="radio" name="disponivel" value="0" /> <label>Não</label>
                 </fieldset>
                 <fieldset>
                     <legend>Categorias</legend>
-                    <input type="checkbox" value="1" /> <label>Categoria 1</label>
-                    <input type="checkbox" value="2" /> <label>Categoria 2</label>
-                    <input type="checkbox" value="3" /> <label>Categoria 3</label>
-                    <input type="checkbox" value="4" /> <label>Categoria 4</label>
-                    <input type="checkbox" value="5" /> <label>Categoria 5</label>
+                    <input type="checkbox" name="categorias" value="1" /> <label>Categoria 1</label>
+                    <input type="checkbox" name="categorias" value="2" /> <label>Categoria 2</label>
+                    <input type="checkbox" name="categorias" value="3" /> <label>Categoria 3</label>
+                    <input type="checkbox" name="categorias" value="4" /> <label>Categoria 4</label>
+                    <input type="checkbox" name="categorias" value="5" /> <label>Categoria 5</label>
                 </fieldset>
                 <div>
                     <select>
