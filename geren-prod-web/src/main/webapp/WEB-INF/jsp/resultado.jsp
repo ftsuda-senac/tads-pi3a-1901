@@ -11,6 +11,7 @@
     <body>
         <h1>Resultado <c:out value="${metodoHttp}" /></h1>
         <div>
+            <div>Escondido <c:out value="${escondido}" /></div>
             <div>Nome: <c:out value="${nome}" /></div>
             <div>Senha: <c:out value="${senha}" /></div>
             <div>Descrição: <c:out value="${descricao}" /></div>

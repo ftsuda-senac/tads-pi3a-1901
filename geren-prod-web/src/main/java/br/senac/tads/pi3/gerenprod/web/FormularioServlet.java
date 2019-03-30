@@ -7,6 +7,7 @@ package br.senac.tads.pi3.gerenprod.web;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,6 +35,7 @@ public class FormularioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // RECUPERA INFORMACOES DA REQUISICAO
+        String escondido = request.getParameter("escondido");
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         String senha = request.getParameter("senha");
@@ -66,6 +68,7 @@ public class FormularioServlet extends HttpServlet {
 
         // ARMAZENANDO VALORES COMO ATRIBUTOS
         request.setAttribute("metodoHttp", "POST");
+        request.setAttribute("escondido", escondido);
         request.setAttribute("nome", nome);
         request.setAttribute("descricao", descricao);
         request.setAttribute("senha", senha);
@@ -73,7 +76,7 @@ public class FormularioServlet extends HttpServlet {
         request.setAttribute("precoCompra", new BigDecimal(precoCompraStr));
         request.setAttribute("precoVenda", new BigDecimal(precoVendaStr));
         request.setAttribute("disponivel", "1".equals(disponivelStr) ? "SIM" : "NÃO");
-        request.setAttribute("categorias", Arrays.asList(categoriasArr));
+        request.setAttribute("categorias", (categoriasArr != null) ? Arrays.asList(categoriasArr) : new ArrayList<String>());
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/jsp/resultado.jsp");
