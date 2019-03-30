@@ -15,13 +15,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author fernando.tsuda
  */
-@WebServlet(name = "FormularioServlet", urlPatterns = {"/formulario-servlet"})
-public class FormularioServlet extends HttpServlet {
+@WebServlet(name = "Formulario2Servlet", urlPatterns = {"/formulario2-servlet"})
+public class Formulario2Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -67,28 +68,28 @@ public class FormularioServlet extends HttpServlet {
             dispatcher.forward(request, response);
             return;
         }
+        
+        HttpSession sessao = request.getSession();
 
         // ARMAZENANDO VALORES COMO ATRIBUTOS
-        request.setAttribute("metodoHttp", "POST");
-        request.setAttribute("escondido", escondido);
-        request.setAttribute("nome", nome);
-        request.setAttribute("descricao", descricao);
-        request.setAttribute("senha", senha);
+        sessao.setAttribute("metodoHttp", "POST");
+        sessao.setAttribute("escondido", escondido);
+        sessao.setAttribute("nome", nome);
+        sessao.setAttribute("descricao", descricao);
+        sessao.setAttribute("senha", senha);
         int quantidade = 0;
         try {
             quantidade = Integer.parseInt(quantidadeStr);
         } catch (Exception e) {
 
         }
-        request.setAttribute("quantidade", quantidade);
-        request.setAttribute("precoCompra", new BigDecimal(precoCompraStr));
-        request.setAttribute("precoVenda", new BigDecimal(precoVendaStr));
-        request.setAttribute("disponivel", "1".equals(disponivelStr) ? "SIM" : "NÃO");
-        request.setAttribute("categorias", (categoriasArr != null) ? Arrays.asList(categoriasArr) : new ArrayList<String>());
+        sessao.setAttribute("quantidade", quantidade);
+        sessao.setAttribute("precoCompra", new BigDecimal(precoCompraStr));
+        sessao.setAttribute("precoVenda", new BigDecimal(precoVendaStr));
+        sessao.setAttribute("disponivel", "1".equals(disponivelStr) ? "SIM" : "NÃO");
+        sessao.setAttribute("categorias", (categoriasArr != null) ? Arrays.asList(categoriasArr) : new ArrayList<String>());
 
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/WEB-INF/jsp/resultado.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("resultado-servlet");
     }
 
 }

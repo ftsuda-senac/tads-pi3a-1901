@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,12 +10,23 @@
     <body>
         <h1>Produto - Inclusão</h1>
         <div>
-            <form action="formulario-servlet" method="post">
+            <form action="formulario2-servlet" method="post">
                 <input type="hidden" name="escondido" value="xpto" />
                 <div>
                     <label>Nome</label>
                     <div>
-                        <input type="text" name="nome" />
+                        <input type="text" name="nome" maxlength="50" />
+                    </div>
+                    <c:if test="${not empty erroNome}">
+                        <p style="background-color: lightcoral">
+                            <c:out value="${erroNome}" />
+                        </p>
+                    </c:if>
+                </div>
+               <div>
+                    <label>E-mail</label>
+                    <div>
+                        <input type="email" />
                     </div>
                 </div>
                 <div>
@@ -28,6 +40,11 @@
                     <div>
                         <textarea name="descricao"></textarea>
                     </div>
+                    <c:if test="${not empty erroDescricao}">
+                        <p style="background-color: lightcoral">
+                            <c:out value="${erroDescricao}" />
+                        </p>
+                    </c:if>
                 </div>
                 <div>
                     <label>Quantidade</label>
@@ -59,6 +76,11 @@
                     <input type="checkbox" name="categorias" value="3" /> <label>Categoria 3</label>
                     <input type="checkbox" name="categorias" value="4" /> <label>Categoria 4</label>
                     <input type="checkbox" name="categorias" value="5" /> <label>Categoria 5</label>
+                    <c:if test="${not empty erroCategorias}">
+                        <p style="background-color: lightcoral">
+                            <c:out value="${erroCategorias}" />
+                        </p>
+                    </c:if>
                 </fieldset>
                 <div>
                     <select>

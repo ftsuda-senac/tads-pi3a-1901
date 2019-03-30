@@ -1,0 +1,38 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Produto - Resultado</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Resultado <c:out value="${sessionScope.metodoHttp}" /></h1>
+        <div>
+            <div>Escondido <c:out value="${sessionScope.escondido}" /></div>
+            <div>Nome: <c:out value="${sessionScope.nome}" /></div>
+            <div>Senha: <c:out value="${sessionScope.senha}" /></div>
+            <div>Descrição: <c:out value="${sessionScope.descricao}" /></div>
+            <div>Quantidade: <c:out value="${sessionScope.quantidade}" /></div>
+            <div>Preço compra: <fmt:formatNumber type="currency" value="${sessionScope.precoCompra}" /></div>
+            <div>Preço venda: <fmt:formatNumber type="currency" value="${sessionScope.precoVenda}" /></div>
+            <div>Disponível: <c:out value="${sessionScope.disponivel}" /></div>
+            <div>Categorias:
+                <c:choose>
+                    <c:when test="${not empty sessionScope.categorias}">
+                        <ul>
+                            <c:forEach items="${sessionScope.categorias}" var="cat">
+                                <li><c:out value="${cat}" /></li>
+                            </c:forEach>
+                        </ul>
+                    </c:when>
+                    <c:otherwise>
+                        Nenhuma selecionada
+                    </c:otherwise>
+                </c:choose>
+            </div>
+        </div>
+    </body>
+</html>
