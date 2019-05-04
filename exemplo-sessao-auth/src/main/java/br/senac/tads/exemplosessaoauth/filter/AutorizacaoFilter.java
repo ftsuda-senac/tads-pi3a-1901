@@ -52,7 +52,8 @@ public class AutorizacaoFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             // Mostra erro de acesso nao autorizado
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/erro-nao-autorizado.jsp");
+            sessao.setAttribute("erroAutorizacao", true);
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/home");
         }
     }
 

@@ -40,5 +40,13 @@
                 </div>
             </c:otherwise>
         </c:choose>
+        <c:if test="${sessionScope.erroAutorizacao}">
+            <script>
+                document.addEventListener("DOMContentLoaded", function(){
+                    alert("ERRO - ACESSO NÃO AUTORIZADO");
+                });
+            </script>
+            <c:remove scope="session" var="erroAutorizacao" />
+        </c:if>
     </body>
 </html>
