@@ -6,39 +6,39 @@
 package br.senac.tads.exemplosessaoauth.servlet;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author fernando.tsuda
  */
-@WebServlet(name = "ExemploSessaoServlet", urlPatterns = {"/exemplo-sessao"})
-public class ExemploSessaoServlet extends HttpServlet {
-    
-    
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
+public class LogoutServlet extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession sessao = request.getSession();
+        sessao.invalidate();
+        
+        response.sendRedirect("login");
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession sessao = request.getSession();
-        if (sessao.getAttribute("acessos") == null) {
-            sessao.setAttribute("acessos", new ArrayList<>());
-        }
-        List<LocalDateTime> acessos = 
-                (List<LocalDateTime>) sessao.getAttribute("acessos");
-       
-        acessos.add(LocalDateTime.now());
-
-        request.getRequestDispatcher("/WEB-INF/jsp/exemplo-sessao.jsp")
-            .forward(request, response);
-        
+        processRequest(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
 }

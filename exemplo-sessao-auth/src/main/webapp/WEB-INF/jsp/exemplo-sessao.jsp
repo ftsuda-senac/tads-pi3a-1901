@@ -11,7 +11,7 @@
         <c:if test="${sessionScope.acessos != null && !sessionScope.acessos.isEmpty()}">
             <ul>
                 <c:forEach items="${sessionScope.acessos}" var="acesso">
-                    <li><c:out value="acesso" /></li>
+                    <li><c:out value="${acesso}" /></li>
                 </c:forEach>
             </ul>
         </c:if>
